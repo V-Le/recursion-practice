@@ -4,7 +4,6 @@
 Write a function called sumRange. It will take a number and return the sum of all numbers from 1 up to the number passed in.
 
 Sample: sumRange(3) returns 6, since 1 + 2 + 3 = 6. */
-
 function sumRange(n) {
   let sum = 0;
   for (let i = n; i > 0; i--) {
@@ -17,7 +16,7 @@ function sumRangeRecursion(n, sum = 0) {
   if (n <= 0) {
     return sum;
   }
-  sumRangeRecursion(n-1, sum+n);
+  return sumRangeRecursion(n-1, sum+n);
 }
 sumRangeRecursion(3)
 
@@ -31,12 +30,16 @@ console.log(power(2, 3)); // 8
 console.log(power(2, 2)); // 4 
 console.log(power(2, 1)); // 2
 console.log(power(2, 0)); // 1 */
-
 function powerRecursion(base, exp, total = 1) {
   if (exp <= 0) {
     return total;
   }
-  powerRecursion(base, exp-1, total*base);
+  return powerRecursion(base, exp-1, total*base);
 }
-
 powerRecursion(2,4);
+
+function power(base, exponent){
+	if(exponent == 0) return 1;
+	return base * power(base, exponent - 1);
+}
+power(2,4);
