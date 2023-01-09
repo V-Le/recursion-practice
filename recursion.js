@@ -51,7 +51,7 @@ Sample:
 factorial(5); // 5 * 4 * 3 * 2 * 1 === 120 */
 
 function factorial(n) {
-  if(n == 0) {
+  if(n == 1) {
     return 1;
   }
   return n * factorial(n-1);
