@@ -57,22 +57,42 @@ function completed() {
     return n * factorial(n-1);
   }
   factorial(5); //120
+  var allAreLessThanSeven = all([1,2,9], function(num){
+    return num < 7;
+  });
+  console.log(allAreLessThanSeven); // [1,2,9] false
+  
+  function all(array, callback) {
+    var copy = copy || array.slice(); //unless it exists, this creates a shallow copy of the passed array
+    
+    if (copy.length == 0) { //if copy array has reach 0, then all numbers are < 7
+      return true;
+    }
+    
+    if (callback(copy[0])) { //passes copy[0] into callback function and checks if it is true, if so, then shift() first number out and returns new callback
+      copy.shift();
+      return all(copy, callback);
+    } else return false;
+  }
 }
 
-var allAreLessThanSeven = all([1,2,9], function(num){
-	return num < 7;
-});
-console.log(allAreLessThanSeven); // [1,2,9] false
+/* Question 5: Product of an array
+Write a function called productOfArray which takes in an array of numbers and returns the product of them all
 
-function all(array, callback) {
-  var copy = copy || array.slice(); //unless it exists, this creates a shallow copy of the passed array
-  
-  if (copy.length == 0) { //if copy array has reach 0, then all numbers are < 7
-    return true;
+Sample:
+var six = productOfArray([1,2,3]) // 6
+var sixty = productOfArray([1,2,3,10]) // 60 */
+
+var sixty = productOfArray([1,2,3,10]) // 60
+console.log(sixty);
+
+function productOfArray(array, total = 1) {
+  var copy = copy || array.slice();
+
+  if (copy.length == 0) {
+    return total;
+  } else {
+    var total = total * copy.shift();
+    return productOfArray(copy, total)
   }
-  
-  if (callback(copy[0])) { //passes copy[0] into callback function and checks if it is true, if so, then shift() first number out and returns new callback
-    copy.shift();
-    return all(copy, callback);
-  } else return false;
 }
