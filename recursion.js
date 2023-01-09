@@ -74,25 +74,29 @@ function completed() {
       return all(copy, callback);
     } else return false;
   }
-}
-
-/* Question 5: Product of an array
-Write a function called productOfArray which takes in an array of numbers and returns the product of them all
-
-Sample:
-var six = productOfArray([1,2,3]) // 6
-var sixty = productOfArray([1,2,3,10]) // 60 */
-
-var sixty = productOfArray([1,2,3,10]) // 60
-console.log(sixty);
-
-function productOfArray(array, total = 1) {
-  var copy = copy || array.slice();
-
-  if (copy.length == 0) {
-    return total;
-  } else {
-    var total = total * copy.shift();
-    return productOfArray(copy, total)
+  /* Question 5: Product of an array
+  Write a function called productOfArray which takes in an array of numbers and returns the product of them all
+  
+  Sample:
+  var six = productOfArray([1,2,3]) // 6
+  var sixty = productOfArray([1,2,3,10]) // 60 */
+  
+  var sixty = productOfArray([1,2,3,10]) // 60
+  console.log(sixty);
+  
+  function productOfArray(array, total = 1) {
+    var copy = copy || array.slice();
+  
+    if (copy.length == 0) {
+      return total;
+    } else {
+      var total = total * copy.shift();
+      return productOfArray(copy, total)
+    }
+  }
+  
+  function productOfArrayAnswer(array) {
+    if(array.length === 0) return 1;
+    return array.shift() * productOfArrayAnswer(array)
   }
 }
