@@ -57,6 +57,7 @@ function completed() {
     return n * factorial(n-1);
   }
   factorial(5); //120
+
   var allAreLessThanSeven = all([1,2,9], function(num){
     return num < 7;
   });
@@ -99,4 +100,44 @@ function completed() {
     if(array.length === 0) return 1;
     return array.shift() * productOfArrayAnswer(array)
   }
+
+  /* Question 6: Search JS object
+  Write a function called contains that searches for a value in a nested object. It returns true if the object contains that value. */
+  var nestedObject = {
+    data: {
+        info: {
+            stuff: {
+                thing: {
+                    moreStuff: {
+                        magicNumber: 44,
+                        something: 'foo2'
+                    }
+                }
+            }
+        }
+    }
+  }
+  
+  let hasIt = contains(nestedObject, 44); // true
+  let doesntHaveIt = contains(nestedObject, "foo"); // false
+  console.log(hasIt, doesntHaveIt);
+  
+  function contains(obj, value){
+    for (const key in obj) {
+      if (typeof obj[key] === "object"){
+        return contains(obj[key], value)
+      }
+      if (obj[key] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
+
+
+/* Question 7: Parse a multi-dimensional array
+Given a multi-dimensional integer array, return the total number of integers stored inside this array
+
+Sample:
+var seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7 */
