@@ -22,16 +22,12 @@ Now write another method fibsRec which solves the same problem recursively. This
 } */
 
 function fibsRec(num, fibsRecArray = [0,1]) {
-  if (num == 2) {
+  if (num <= 2) {
     return fibsRecArray;
   }
-  if(num == 1){
-    return [0];
-  }
-  if (num <= 0){
-    return [];
-  }
-  fibsRecArray.push(fibsRecArray[fibsRecArray.length-2] + fibsRecArray[fibsRecArray.length-1]);
+  let firstNum = fibsRecArray[fibsRecArray.length-2];
+  let secNum = fibsRecArray[fibsRecArray.length-1];
+  fibsRecArray.push(firstNum + secNum);
   
   return fibsRec(num-1, fibsRecArray);
 }
