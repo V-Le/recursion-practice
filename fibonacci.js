@@ -21,7 +21,7 @@ Now write another method fibsRec which solves the same problem recursively. This
   return fibArray;
 } */
 
-function fibsRec(num, fibsRecArray = [0,1]) {
+/* function fibsRec(num, fibsRecArray = [0,1]) {
   if (num <= 2) {
     return fibsRecArray;
   }
@@ -31,6 +31,15 @@ function fibsRec(num, fibsRecArray = [0,1]) {
   
   return fibsRec(num-1, fibsRecArray);
 }
-console.log(fibsRec(8));
+console.log(fibsRec(8)); */
 
+function fibsRec(num, fibsRecArray = [0,1]) {
+  if (num <= 2) {
+    return fibsRecArray;
+  }
+  fibsRecArray.push(fibsRecArray[fibsRecArray.length-2] + fibsRecArray[fibsRecArray.length-1]);
+  
+  return fibsRec(num-1, fibsRecArray);
+}
+console.log(fibsRec(8));
 
