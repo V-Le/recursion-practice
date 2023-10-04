@@ -23,3 +23,14 @@ function factorial(n) {
 }
 console.log(factorial(3));
 
+// Question 4: Check all values in an array
+// Write a function called all which accepts an array and a callback and returns true if every value in the array returns true when passed as parameter to the callback function
+var numArr = [1,2,9];
+var numArrTwo = [2,4,6];
+function lets(Arr) {
+  if (Arr.length == 0) return "true";
+  if (Arr.pop() > 7) { 
+    return "false";
+  } else return lets(Arr);
+}
+console.log(lets(numArrTwo))
