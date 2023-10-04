@@ -25,12 +25,30 @@ console.log(factorial(3));
 
 // Question 4: Check all values in an array
 // Write a function called all which accepts an array and a callback and returns true if every value in the array returns true when passed as parameter to the callback function
-var numArr = [1,2,9];
-var numArrTwo = [2,4,6];
-function lets(Arr) {
-  if (Arr.length == 0) return "true";
-  if (Arr.pop() > 7) { 
-    return "false";
-  } else return lets(Arr);
+// var numArr = [1,2,9];
+// var numArrTwo = [2,4,6];
+// function lets(Arr) {
+//   if (Arr.length == 0) return "true";
+//   if (Arr.pop() > 7) { 
+//     return "false";
+//   } else return lets(Arr);
+// }
+// console.log(lets(numArrTwo))
+
+var numArr = [1,2,6];
+var allAreLessThanSeven = all(numArr, function(num){
+	return num < 7;
+});
+
+function all(array, callback) {
+  var copy = copy || array.slice();
+  
+  if (copy.length === 0) return true;
+  if (callback(copy[0])) {
+    var numCheck = copy.shift();
+    return all(copy, callback);
+  } else {
+    return false;
+  }
 }
-console.log(lets(numArrTwo))
+console.log(allAreLessThanSeven)
