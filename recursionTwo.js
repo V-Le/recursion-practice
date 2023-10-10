@@ -88,3 +88,23 @@
 //   }
 //   return false;
 // }
+
+// // Question 7: Parse a multi-dimensional array
+// // Given a multi-dimensional integer array, return the total number of integers stored inside this array
+// var seven = totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]); // 7
+
+// function totalIntegers(arr) {
+//     let total = 0;
+//     if (arr.length === 0) return 0;
+
+//     let first = arr.shift();
+//     console.log(first);
+//     if (Number.isInteger(first)) {
+//         total += 1;
+//         console.log(`isInteger: ${first} | Total: ${total}`);
+//     } else if (Array.isArray(first)) {
+//         console.log(`isArray: ${first}`);
+//         total += totalIntegers(first);
+//     }
+//     return total + totalIntegers(arr);
+// }
